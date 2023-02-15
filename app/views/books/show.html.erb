@@ -1,8 +1,12 @@
-<p>
-  <strong>Title:</strong>
-    <%= @book.title %>
-</p>
-<p>
-  <strong>Body:</strong>
+<%= form_with model: @book, url: edit_book_path(@book.id), method: :patch do |f| %>
+  <p>
+    <strong>　Title:</strong><%= @book.title %>
+  </p>
+  <p>
+    <strong>　Body:</strong>
     <%= @book.body %>
-</p>
+  </p>
+  <a><%= link_to "Edit", edit_book_path(@book.id) %></a>
+  |
+  <a><%= link_to "Back", books_path %></a>
+<% end %>
