@@ -22,14 +22,18 @@
 
   <h2>New book</h2>
   <% if @book.errors.any? %>
-    <%= @book.errors.count %> errors prohibited this book from being saved:
+    <% if @book.errors.count == 1 %>
+      <%= @book.errors.count %> error prohibited this book from being saved:
+    <% else %>
+      <%= @book.errors.count %> errors prohibited this book from being saved:
+    <% end %>
     <ul>
       <% @book.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
   <% end %>
-  <%= form_with model: @book, url: '/books', method: :post do |f| %>
+  <%= form_with model: @book, method: :post do |f| %>
     <div>
       <label>Title</label></div>
       <%= f.text_field :title %>
